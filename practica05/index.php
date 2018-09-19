@@ -1,5 +1,5 @@
 <?php
-  //require_once("db/database_utilities.php");
+  require_once("db/database_utilities.php");
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -43,23 +43,23 @@
                   </th>
                 </thead>
                 <tr>
-                  <td>
-                    <?php echo(count_users())?>
+                  <td>                 
+                    <?php echo(count_users()) //Cuenta los usuarios?> 
                   </td>
                   <td>
-                    <?php echo(count_types())?>
+                    <?php echo(count_types()) //Cuenta los tipos?>
                   </td>
                   <td>
-                    <?php echo(count_status())?>
+                    <?php echo(count_status()) //Cuenta los status?>
                   </td>
                   <td>
-                    <?php echo(count_access())?>
+                    <?php echo(count_access()) //Cuenta los logs?>
                   </td>
                   <td>
-                    <?php echo(count_active())?>
+                    <?php echo(count_active()) //Cuenta los usuarios activos?>
                   </td>
                   <td>
-                    <?php echo(count_inactive())?>
+                    <?php echo(count_inactive()) //Cuenta los inactivos?>
                   </td>
                 </tr>
               </table>
@@ -74,7 +74,8 @@
           $count=0;
 
           foreach($tables as $t){
-            $r = selectAllFromTable($t);  
+            $r = selectAllFromTable($t);
+            //echo "<br>" . count($r) . "<br>";
             echo("Tabla: ".$t);
           ?>
             <table>
@@ -91,7 +92,8 @@
                   //Se imprimen las filas y columnas
                   for($i=0; $i<count($r);$i++){
                     echo("<tr>");
-                    for($j=0; $j<count($cols[$count]); $j++){
+                    
+                    for($j=0; $j<count($cols[$count]); $j++){                      
                       echo("<td>".$r[$i][$j]."</td>");
                     }
                     echo("</tr>");

@@ -2,7 +2,7 @@
 
 include_once('db/database_utilities.php');
 
-$t = $_GET["t"];
+$t = $_GET["t"]; //Se obtiene l variable por el método get
 
 $user_access = getAll($t);           //Se obtienen todos los registros y se llena el array mediante los usuarios encontrados en la base de datos.
 $total_users = count($user_access); //Se hace un conteo de cuantos registros se tinen en el sistema.
@@ -43,6 +43,9 @@ $total_users = count($user_access); //Se hace un conteo de cuantos registros se 
                   </tr>
                 </thead>
                 <tbody>
+                  <?php 
+                    // Ciclo para listar todos los jugadores
+                   ?>
                   <?php foreach( $user_access as $id => $user ){ ?>
                   <tr>
                     <td><?php echo $user['id'] ?></td>
