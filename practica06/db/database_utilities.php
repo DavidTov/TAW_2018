@@ -187,104 +187,26 @@ function update($matricula, $nombre, $posicion, $carrera, $email, $id_type){
 }
 
 
- // Función que valida si el email y password de un usuario existen. Tabla user
- function validar($email, $password){
- 	global $pdo;
- 	
- 	$sql = "SELECT * FROM user where email=:email and password=:password";
- 	
- 	$resultado = $pdo->prepare($sql); // Se prepara la consulta
-
- 	// Se pasan los parámetros de la consulta con los de la función
- 	$resultado->bindParam(":email", $email);
- 	$resultado->bindParam(":password", $password);
-
- 	$resultado->execute(); // Se ejecuta la consulta
- 	
- 	$res = $resultado->fetch(PDO::FETCH_ASSOC);//Se le asigna a la variable el registro de la tabla
-		
-
- 	if($res){
- 		//Existe el registro
- 		return $res;
- 	}else{
- 		//No Existe el registro
- 		return null;
- 	}
- 	
- }
-
-
-
-  // Funcion que agrega nuevo usuario
- function add_user($email, $password, $status, $type){
-	global $pdo;
-
-	$sql = "INSERT INTO user (email, password, status_id, user_type_id) VALUES(?, ?, ?, ?)";
-	$resultado = $pdo->prepare($sql);
-	$resultado->execute([$email, $password, $status, $type]);
-
-	if($resultado){echo "Exito!"; }
-	else { echo "No se ha agregado";}
-}
-
- 
- function update_user($id_user, $password, $status){
+ function iniciarSesion($id, $password){
  	global $pdo;
 
-	$sql = "UPDATE user SET password=:password, status_id=:status where id=:id";
-
-	$resultado = $pdo->prepare($sql);
-
-	//Se pasan los parámetros en la consulta con bindParam
-	$resultado->bindParam(":password",$password);
-	$resultado->bindParam(":status",$status);
-	$resultado->bindParam(":id",$id_user);			
-	
-
-	//Mensaje de exito si se agŕegó
-	$resultado->execute();
-	if($resultado){ echo "Actualizado";}
-	else echo "No Agregado";
- }
-
-  //Funcion que permite eliminar un usuario de la base de datos utilizando su id.
- function delete_user($id){
-	global $pdo;
-	//echo "en delete " .$id;
-	$sql = "DELETE FROM user where id=?";
-	$sentencia = $pdo->prepare($sql);
-
-	//$sentencia->bindParam(":id",$id);
-
-	$sentencia->execute([$id]);
-	
-}
-
- //Función que agrega registro a la tabla user_log cuando igresa un usuario
- function add_log($date, $user_id){
- 	global $pdo;
-
- 	$sql = "INSERT INTO user_log (date_logged_in, user_id) VALUES(?,?)";
+ 	$sql = "SELECT * FROM user WHERE id=:id and password=:password";
  	$resultado = $pdo->prepare($sql);
- 	$resultado->execute([$date, $user_id]);
+
+ 	$resultado->bindParam(":id", $id);
+ 	$resultado->bindParam(":password", $password);
+ 	$resultado->execute();
+
+ 	if($resultado) {
+ 		echo "Encontrado"; 
+ 		return true;
+ 	}
+ 	else{
+ 		echo "No encontrado";
+ 		return false;
+ 	}
+
  }
 
-
-
- // obtener todos los usuarios de la tabla user
- function getAll_user(){
-	global $pdo;
-
-	
-	$sql = "SELECT * FROM user"; //Consulta
-	$resultado = $pdo->prepare($sql);
-	$resultado->execute();
-
-	$registros = $resultado->fetchAll();
-
-	//Se retornan todos los registros de la tabla dependiendo del tipo
-	return $registros;
-}
 ?>
 

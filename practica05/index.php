@@ -11,7 +11,9 @@
     <script src="./js/vendor/modernizr.js"></script>
   </head>
   <body>
-    <?php require_once('header.php'); ?>
+    <?php //Se incluye el header con el botón de inicio de sesión ?>
+    <?php require_once('header_btn_sesion.html'); ?>
+
 
     <div class="row">
       <div class="large-9 columns">
