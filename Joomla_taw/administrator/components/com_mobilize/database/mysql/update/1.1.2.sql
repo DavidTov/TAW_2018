@@ -1,1 +1,0 @@
-ALTER TABLE `#__jsn_mobilize_profiles` ADD `profile_device` varchar(10) NOT NULL;

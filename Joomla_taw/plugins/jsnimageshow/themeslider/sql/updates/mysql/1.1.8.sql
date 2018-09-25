@@ -1,1 +1,0 @@
-ALTER TABLE `#__imageshow_theme_slider` ADD COLUMN `img_transparent_background` char(150) DEFAULT 'no';

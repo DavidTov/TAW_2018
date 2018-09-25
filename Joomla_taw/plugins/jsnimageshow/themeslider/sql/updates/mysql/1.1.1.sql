@@ -1,1 +1,0 @@
-ALTER TABLE `#__imageshow_theme_slider` ADD `caption_position` char(150) default 'bottom';

@@ -1,1 +1,0 @@
-var jsnThemeGridjQuery = jQuery.noConflict();

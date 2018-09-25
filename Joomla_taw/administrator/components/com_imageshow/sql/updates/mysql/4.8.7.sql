@@ -1,1 +1,0 @@
-ALTER TABLE `#__imageshow_images` ADD `image_alt_text` TEXT NULL DEFAULT NULL;
