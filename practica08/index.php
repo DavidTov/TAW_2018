@@ -1,47 +1,23 @@
 <?php 
 
-	include "db/database_utilities.php";
+	// el index que muestra al usuario la salida de las vistas y a través de él 
+	// enviaremos las diferentes acciones del usuario al controlador
 
-	echo "Datos de los usuarios";
-	echo "<br>";
+	// Mostrar la plantilla al usuario (template.php) la cual se alojará en views
 
-	$alumnos = getAll();
-	$cont = count($alumnos);
+	
+	
+ 	session_start();
+	// Invocamos el modelo que se utilizará en todos los archivos
+	require_once "models/enlaces.php"; //La parte pública que muestra los datos
+	require_once "models/crud.php";
 
+	require_once "controllers/controller.php"; //Recibir lo que el usuario diga
+
+	//Para poder ver el template, se hace una petición mediante a un controlador
+	//Creamos el objeto: 
+	$mvc = new MvcController();
+
+	//Muestra la función "plantilla" que se encuentra en controllers/controller
+	$mvc->pagina();
  ?>
-
- <!DOCTYPE html>
- <html>
- <head>
- 	<title> Alumnos y tutores </title>
- </head>
- <body>
- 	<br><br>
- 	<table border="3px;">
- 		<thead>
- 			<th> ID </th>
- 			<th> Alumno </th>
- 			<th> Carrera </th>
- 			<th> Tutor </th>
- 		</thead>
- 		<tbody>
-			<?php 
-				for($i=0; $i<$cont; $i++){
-					echo "<tr>";
-					echo "<td>" . $alumnos[$i]["matricula"] . "</td>";
-					echo "<td>" . $alumnos[$i]["nombreAlumno"] . "</td>";
-					echo "<td>" . $alumnos[$i]["nombreCarrera"] . "</td>";
-					echo "<td>" . $alumnos[$i]["nombreTutor"] . "</td>";
-					echo "</tr>";
-				}
-			 ?>
- 		</tbody>
- 	</table>
-
-
- 	<br>
- 	<a href="registrar_carrera.php"> Registrar carrera </a><br>
- 	<a href="registrar_tutor.php"> Registrar tutor </a><br>
- 	<a href="registrar_alumno.php"> Registrar alumno </a><br>
- </body>
- </html>
