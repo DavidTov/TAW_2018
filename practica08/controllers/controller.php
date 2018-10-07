@@ -2,7 +2,7 @@
 	
 	//Controlador principal, el padre
 	class MvcController{
-		//Llamr a la plantilla
+		//Llamar a la plantilla
 		public function pagina(){
 			//include se utiliza para invocar el archivo que contiene el código html
 			include "views/template.php";
@@ -27,9 +27,13 @@
 			// Mostrar los archivos de los enlaces de cada una de las secciones: inicio, nosotros. etc.
 			// Para esto hay que mandar al modelo para que haga dicho proceso y muestre la información.
 
+
+			// Si la sesión está iniciada solo se podrá ver la vista de usuarios
 			if($_SESSION && ($enlaces=="ingresar" || $enlaces=="registro" || $enlaces=="index")){
 				$enlaces = "usuarios";
 			}
+
+			// Manda llamar el metodo que devuelve el archivo a incluir
 			$respuesta = Paginas::enlacesPaginasModel($enlaces);
 			include $respuesta;			
 		}
@@ -37,39 +41,49 @@
 		#REGISTRO DE USUARIOS
 		public function registroUsuarioController(){
 
+			// Se crea un array asociativo con las variables devueltas del formulario con POST
 			$datosController = array('usuario' => $_POST["usuarioRegistro"],'password' => $_POST["passwordRegistro"],'email' => $_POST["emailRegistro"]);
 
-			echo "antes<br>";
-			// Se pasa el arreglo y el nombre de la tabla
-			$respuesta = Datos::registroUsuarioModel($datosController, "users");			
 			
-			echo "Despues<br>";
+			// Se pasa el arreglo y el nombre de la tabla para realizar
+			// la interacción con la BD a través del modelo
+			$respuesta = Datos::registroUsuarioModel($datosController, "users");				
 
 
-			//Se imprime la respuesta en la vista
+			//Se imprime la respuesta en la vista mandando con GET la variable action con el valor "ok"
 			if($respuesta == "succes"){
 				header("Location:index.php?action=ok");
 			}else{
+				// si no se registró con éxitó vuelve al index
 				header("Location:index.php");
 			}
 		}
 
 
 
-		//Saber si un usuario esta registrado
+		#INICIO DE SESIÓN DE LOS USUARIOS
+		//Saber si un usuario esta registrado pasándole como parámetro el usuario y contraseña
 		public function ingresoUsuarioController($usuario, $contrasena){
+
+			// Se trae la respuesta interactuando con el método del modelo el cual revisa que los datos
+			// estén en la BD
 			$respuesta = Datos::ingresoUsuarioModel($usuario, $contrasena);
 
+			// Si es exitosa el ingreso del usuario se guardan sus datos en la variable SESSION
 			if($respuesta == "succes"){
 				$_SESSION["usuario"] = $_POST["usuarioIngreso"];
 				$_SESSION["password"] = $_POST["passwordIngreso"];			
+
+				// Una vez validado que el usuario existe se inicia sesión y se redirecciona al enlace
 				header("Location:index.php?action=cambio");
 			}else{
+				// Si no fue exitosa el inicio de sesión se reedirecciona al formulario de registro en index
 				header("Location:index.php");
 			}
 		}
 
 
+		
 		public function datoUsuarioController(){
 			$respuesta = Datos::datoUsuarioModel();
 

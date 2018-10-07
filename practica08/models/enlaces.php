@@ -2,7 +2,7 @@
 
 
 	class Paginas{
-		// Función con el parámetro $enlacesModel que se recibe a través del controlador
+		// Función con el parámetro $enlaces que se recibe a través del controlador
 		// public cualquier controlador consuma este modelo
 		public function enlacesPaginasModel($enlaces){
 			// Validamos
@@ -20,6 +20,9 @@
 			// Una vez que action viene vacío (validando en el controlador) se consulta
 			// si la variable $enlaces es igual a la cadena index, de ser así se
 			// muestre index.php
+
+			// De acuerdo al parámetro enlaces retorna una cadena con la ruta del archivo
+			
 			else if($enlaces == "index"){
 					$module = "views/modules/registro.php";
 			}
