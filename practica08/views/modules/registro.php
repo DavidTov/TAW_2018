@@ -1,5 +1,6 @@
 <h1> REGISTRO DE USUARIOS </h1>
 
+<!-- FORMULRIO PARA EL REGISTRO DE USUARIOS -->
 <form method="POST">
 	<input type="text" placeholder="Usuario" name="usuarioRegistro" required>
 
@@ -21,7 +22,7 @@
 	if(isset($_POST["registro_btn"]))
 		$registro->registroUsuarioController();
 
-
+	// Si la variable GET es ok se muestra el mensaje correspondiente
 	if(isset($_GET["action"])){
 		if($_GET["action"] == "ok"){
 			echo "Registro Exitoso";

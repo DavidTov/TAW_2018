@@ -44,7 +44,7 @@
 
 				$id = $datos[$i]["id"];
 		 ?>
-		       
+		       <!-- Se redirecciona con GET al archivo correspondiente de editar y eliminar usuario -->
 		       <td><a href="index.php?action=editar&id=<?php echo($id) ?>" ><button>Editar</button></a></td>
 
 		       <td><a href="index.php?action=eliminar&id=<?php echo($id) ?>"> <button>Eliminar</button></a></td>

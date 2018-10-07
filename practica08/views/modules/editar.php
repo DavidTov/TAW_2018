@@ -1,8 +1,9 @@
 <?php 
 	
+	// Se crea un objeto del tipo MvcController
 	$mvc = new MvcController();
 	
-	// Se guarda el id del regitro a editar
+	// Se guarda con GETel id del regitro a editar
 	if(isset($_GET["id"])){
 		$id = $_GET["id"];
 
@@ -11,14 +12,20 @@
 	}
 
 	
-
+	// Si se oprimió el botón para editar al usuario
 	if(isset($_POST["editar"])){
+		// Se evalúa si la contraseña del usuario en sesión es correcta
 		if($_SESSION["password"] == $_POST["passwordSession"]){
+			// Se manda llamar el método del controlador para editar usuario
 			$editar = $mvc->editarUsuarioController();
+
+			// Si se realizaron con éxito los cambios se redirecciona a index con las variables de GET 
+			// correspondientes
 			if($editar){
 				header("Location:index.php?action=usuarios&changes=yes");
 			}
 		}else{
+			// Si la contraseña del usuario en sesión no es la correcta
 			echo "<script> alert('Su contraseña es incorrecta!') </script>";
 		}		
 	}

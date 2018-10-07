@@ -83,8 +83,9 @@
 		}
 
 
-		
+		#SE TRAEN LOS DATOS DE LOS USUARIOS
 		public function datoUsuarioController(){
+			// Se guarda en la variable lo que retorne el método datoUsuarioModel de la clase Datos
 			$respuesta = Datos::datoUsuarioModel();
 
 			// Si tomo los datos del modelo para pasarlos a la vista
@@ -98,7 +99,9 @@
 
 
 
+		#EDITAR LOS DATOS DE LOS usuarios
 		public function editarUsuarioController() {
+			// Se guarda los que retorne el método del modelo para editar los datos de los usuarios
 			$respuesta = Datos::editarUsuarioModel($_GET["id"], $_POST["usuario"], $_POST["password"], $_POST["email"]);
 
 			//Si se realizó con éxito la actualización de los datos
@@ -107,7 +110,11 @@
 		}
 
 
+		// Se traen los datos del usuario para modificarlo
 		public function getUsuarioController() {
+
+			// se guarda en la variable el resultado del método del modelo que recibe como parámetro el id
+			// pasado con GET del usiario a modificar
 			$respuesta = Datos::getUsuarioModel($_GET["id"]);
 
 			//Si se realizó con éxito la buqueda de los datos
@@ -116,8 +123,10 @@
 		}
 
 
-		//Eliminar usuario
+		#ELIMINAR USUARIO
 		public function eliminarUsuarioController(){
+			// se guarda en la variable el resultado que arroje el método del modelo
+			// pasándo como parámetro (con GET) el id del usuario a eliminar
 			$respuesta = Datos::eliminarUsuarioModel($_GET["id"]);
 
 			//Si se eliminó con éxito al usuario con el id especificado

@@ -1,5 +1,13 @@
 <?php
 	
+	/*
+		CLASE conexion QUE SIRVE PARA HACER LA CONEXIÓN A LA BD
+		TIENE UN MÉTODO conectar EN EL CUAL SE DECLARA UN OBJETO DEL TIPO PDO PASÁNDOLE COMO 
+		PARÁMETROS AL CONSTRUCTOR EL NOMBRE DEL SERVIDOR, NOMBRE DE LA BD, USUARIO Y CONTRASEÑA.
+
+		Y AL FINAL SE RETORNA EL OBJETO DEL TIPO PDO
+	*/
+
 	class Conexion{
 
 		public function conectar(){
@@ -14,7 +22,7 @@
 				echo 'Error al conectarnos: ' . $e->getMessage();
 			}*/
 
-			$link = new PDO("mysql:host=localhost;dbname=mvc","admin","53755c97ea6e4ef9940a4317edc7185434238be40224765c");
+			$link = new PDO("mysql:host=localhost;dbname=mvc","root","");
 
 			return $link;
 
