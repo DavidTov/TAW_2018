@@ -164,6 +164,18 @@
 				header("Location:index.php?action=error");
 			}
 		}
+
+
+
+		#ELIMINAR UN ALUMNO
+		public function eliminarAlumnoController(){
+			// Se almacena el resultado que devuelve la función del modelo
+			$respuesta = Datos::eliminarAlumnoModel($_GET["id"]);
+			if($respuesta){ 
+				header("Location:index.php?action=alumnos");
+			}
+			else{ return false; }
+		}
 	}// Fin class controller
 
 

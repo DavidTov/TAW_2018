@@ -274,5 +274,23 @@
 
 			$stmt->close();
 		}
+
+
+		#ELIMINAR ALUMNO DE LA BD
+		public function eliminarAlumnoModel($id){
+			//Sentencia sql
+			$sql = "DELETE FROM students WHERE matricula=?";
+
+			// Se prepara la sentencia sql con prepare
+			$stmt = connection::conectar()->prepare($sql);
+
+			// Se ejecuta la sentencia y se devuelve true si se ejecuta con éxito
+			if($stmt->execute([$id])){
+				return true;
+			}else{
+				return false;
+			}
+
+		}
 	}
  ?>
