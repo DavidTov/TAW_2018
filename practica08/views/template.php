@@ -97,7 +97,7 @@
 
 	<section>
 	<?php 
-		//Mostraremos un controladorque muestra la plantilla
+		//Mostraremos un controlador que muestra la plantilla
 		$mvc = new MvcController();
 		//Mostramos la función
 		$mvc->enlacesPaginasController();
