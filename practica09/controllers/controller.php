@@ -129,6 +129,31 @@
 			}
 		}
 
+
+		#EDITAR ALUMNO
+		public function editarAlumnoController(){
+
+			// Se asignan a las variables los datos ingresados en el form de editar con POST
+			$matricula = $_POST["matricula"];
+			$nombre = $_POST["nombre"];
+			$carrera = $_POST["carrera"];
+			$situacion = $_POST["situacion"];
+			$email = $_POST["email"];
+			$tutor = $_POST["tutor"];
+			$foto = $_POST["foto"];
+
+			
+
+			$respuesta = Datos::editarAlumnoModel($matricula, $nombre, $carrera, $situacion, $email, $tutor, $foto);
+
+			// Si se editó con éxito, manda la variable action con GET
+			if($respuesta){
+				header("Location:index.php?action=editadoOk");
+			}else{
+				header("Location:index.php?action=editadoError");
+			}
+		}
+
 		#REGISTRAR UNA CARRERA
 		public function registroCarreraController(){
 			$repsuesta = Datos::registroCarreraModel($_POST["nombreCarrera"]); 

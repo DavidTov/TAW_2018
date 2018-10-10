@@ -47,7 +47,7 @@
 				$respuestaModel = "views/iniciarSesion.php";
 			}
 
-			else if($enlaces== "alumnoOk" || $enlaces=="alumnoError"){
+			else if($enlaces=="alumnoOk" || $enlaces=="alumnoError" || $enlaces=="editadoOk" || $enlaces=="editadoError"){
 				$respuestaModel = "views/modules/alumnos.php";
 			}
 
@@ -55,6 +55,11 @@
 			else if($enlaces=="verAlumno" || $enlaces=="editarAlumno" || $enlaces=="eliminarAlumno"){
 				$respuestaModel = "views/modules/".$enlaces.".php";	
 			}
+
+			else if($enlaces == "verAlumno"){
+				$respuestaModel = "views/modules/".$enlaces.".php";
+			}
+
 			// Si el la variable no se reconoce con GET se redirecciona al registro
 			else{
 				$respuestaModel = "views/modules/registro.php";

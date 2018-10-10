@@ -7,6 +7,10 @@
 			echo "<script> alert('Alumno registrado con éxito'); </script>";
 		}else if($_GET["action"] == "alumnoError"){
 			echo "<script> alert('ERROR->No se registró el alumno!'); </script>";
+		}else if($_GET["action"] == "editadoOk"){
+			echo "<script> alert('Cambios realizados con éxito!'); </script>";
+		}else if($_GET["action"] == "editadoError"){
+			echo "<script> alert('ERROR->No se actualizó el registro!'); </script>";
 		}
 	}
 	
@@ -33,20 +37,17 @@
 	//Se crea un objeto del tipo controller
 	$mvc = new controller();
 
-	// Se llama al método para acceder a los datos de los alumnos
-	//$alumnos = $mvc->datosUsuariosController("students");
-
-	
-	// Si trajo por lo menos un registro
-	//if($alumnos)
-	//	$contAlumnos = count($alumnos);
-	//else
-	//	echo "<br><br>No hay registro de estudiantes";
-
-
 	# TRAER TODOS LOS DATOS DE LO USUARIOS
 	$tabla = $mvc->getAllController();
-	$cont = count($tabla);
+	
+
+	// Si trajo por lo menos un registro
+	if($tabla)
+		$cont = count($tabla);
+	else{
+		$cont = 0;
+		echo "<br><br>No hay registro de estudiantes";
+	}
 	
  ?>
 

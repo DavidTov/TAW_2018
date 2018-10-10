@@ -3,14 +3,16 @@
 	/* EDITAR LOS DATOS DE UN ALUMNO */
 
 
-    // Si se oprimió el botón de actualizar alumno
+    // Si se oprimió el botón de actualizar alumno en el form de editar
   if(isset($_POST["editarAlumno"])){
     // Se crea un objeto del tipo controller para editar los datos
     $mvc = new controller();
 
     // SE llama al método del controlador para editar alumno
-    
+    $mvc->editarAlumnoController();
   }
+
+
 
 
 	// Si se oprimió el botón de editar en la tabla de alumnos, con GET obtiene el id
@@ -38,9 +40,12 @@
 <center>
 <br><br><br>
 	<h3> Editar alumno </h3>
+
+
   <form method="POST" >
-  	<label> Matricula </label>
-  	<input type="text" name="matricula" placeholder="Ingrese la matricula" value="<?php echo($alumno["matricula"]) ?>" required>
+  	<label> Matricula: <strong> <?php echo $alumno["matricula"]; ?> </strong> </label> <br>
+
+  	<input type="hidden" name="matricula" placeholder="Ingrese la matricula" value="<?php echo($alumno["matricula"]) ?>" required>
   	<br><br>
 
   	<label>Nombre del alumno</label>
@@ -98,9 +103,3 @@
   </form>
 </center>
 
-
-
-<?php 
-
-
- ?>

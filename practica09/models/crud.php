@@ -216,6 +216,47 @@
 			}
 		}
 
+
+		#EDITAR EL ALUMNO
+		public function editarAlumnoModel($matricula, $nombre, $carrera, $situacion, $email, $tutor, $foto){
+			
+			//Obtener el id de la carrera seleccionada
+			$sql = "SELECT id FROM carreras WHERE nombreCarrera=?";
+			$resultado = connection::conectar()->prepare($sql);
+			$resultado->execute([$carrera]);
+
+			$id = $resultado->fetchAll();		
+			$id_carrera = $id[0]["id"];
+			
+			
+
+
+
+			//Se obtiene el id del tutor
+			$sql = "SELECT id FROM tutores WHERE nombreTutor=?";
+			$resultado = connection::conectar()->prepare($sql);
+			$resultado->execute([$tutor]);
+
+			$id = $resultado->fetchAll();
+			$id_tutor = $id[0]["id"];					
+
+
+			// Sentencia sql
+			$sql = "UPDATE students SET nombre=?, id_carrera=?, situacionAcademica=?, email=?, id_tutor=?, foto=? WHERE matricula=?";
+
+			// Se manda la sentencia como parámetro al método prepare
+			$stmt = connection::conectar()->prepare($sql);
+
+			if($stmt->execute([$nombre, $id_carrera, $situacion, $email, $id_tutor, $foto, $matricula])){
+				return true;
+			}else{
+				return false;
+			}
+
+			
+		}
+
+
 		// agregar una carrera
 		public function registroCarreraModel($nombreCarrera){
 			//Consulta sql
