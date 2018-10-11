@@ -76,7 +76,7 @@
   	<br><br>
 
   	<label>Foto</label>
-    <input type="foto" name="foto">
+    <input type="file" name="foto">
   	<br><br>
 
   	<input type="submit" name="registroAlumno" value="Registrar Alumno">

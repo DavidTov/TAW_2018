@@ -62,7 +62,7 @@
 
 			// Si el la variable no se reconoce con GET se redirecciona al registro
 			else{
-				$respuestaModel = "views/modules/registro.php";
+				$respuestaModel = "views/modules/registroUsuarios.php";
 			}
 
 			return $respuestaModel;
