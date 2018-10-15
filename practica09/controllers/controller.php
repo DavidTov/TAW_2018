@@ -111,6 +111,19 @@
 
 
 		public function registroAlumnoController(){
+			
+			//Para saber el nombre de la foto se manda llamar esta funcion
+        	$nombreArchivo = basename($_FILES['userPhoto']['name']);
+
+        	//Se concatena al nombre la carpeta en donde se guardaran todas las fotos cargadas por los usuarios
+        	$directorio = 'img/' . $nombreArchivo;
+
+        	//Para hacer algunas validaciones y el usuario por ejemplo no pase como foto una archivo pdf se 
+        	//extrae la extencion de la foto
+        	$extension = pathinfo($directorio , PATHINFO_EXTENSION);
+
+
+
 			// Se reciben los datos con POST y semandan como parámetro al modelo
 			$matricula = $_POST["matricula"];
 			$nombre = $_POST["nombre"];
@@ -118,7 +131,9 @@
 			$situacion = $_POST["situacion"];
 			$email = $_POST["email"];
 			$tutor = $_POST["tutor"];
-			$foto = $_POST["foto"];
+			$foto = $matricula.'.'.$extension;
+
+			move_uploaded_file($_FILES['userPhoto']['tmp_name'], 'img/'.$matricula . '.' . $extension);
 
 			$respuesta = Datos::registroAlumnoModel($matricula, $nombre, $carrera, $situacion, $email, $tutor, $foto);
 

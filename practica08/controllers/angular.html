@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<scriptsrc="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"
+></script>
+<script>
+	var app = angular.module("miListaDeCompras", []);
+	app.controller("miControlador", function($scope) {
+		$scope.productos = ["Leche", "Pan", "Queso"];
+		$scope.agregarArticulo = function () {
+			$scope.productos.push($scope.agregame);
+		}
+	});
+</script>
+	<body>
+		<div ng-app="miListaDeCompras" ng-controller="miControlador">
+			<ul>
+				<li ng-repeat="x in productos">{{x}}</li>
+			</ul>
+			<input ng-model="agregame">
+			<button ng-click="agregarArticulo()">Agrega</button>
+		</div>
+		<p>Se ha hecho una lista en HTML basado en los elementos de un arreglo.</p>
+	</body>
+</html>
