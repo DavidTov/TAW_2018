@@ -13,11 +13,11 @@
 		<fieldset>
 			<legend>Registration Form</legend>
 			<label for="name">Name</label>
-			<input type="text" name="name" id="name" value="<?//php echo $_REQUEST["name"]; ?>">
+			<input type="text" name="name" id="name" value="">
 			<font color="red"><?php echo $errors["name"]; ?></font>
 			<br>
 			<label for="username">Username</label>
-			<input type="text" name="username" id="username" value="<?//php echo $_REQUEST["username"]; ?>">
+			<input type="text" name="username" id="username" value="">
 			<font color="red"><?php echo $errors["username"]; ?></font>
 			<br>
 			<label for="password">Password</label>
