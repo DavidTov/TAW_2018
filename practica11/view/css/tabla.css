@@ -1,0 +1,51 @@
+/*
+	Color fondo: #632432;
+	Color header: 246355;
+	Color borde: 0F362D;
+	Color iluminado: 369681;
+*/
+
+
+#main-container{
+	margin: 150px auto;
+	
+}
+
+table{
+	background-color: white;
+	text-align: left;
+	border-collapse: collapse;
+	width: 80%;
+}
+
+td{
+	padding: 12px;
+	font-family: 'Lobster', cursive;
+	font-size: 20px;	
+}
+
+thead, th{	
+	background-color: #350035;	
+	color: white;
+	font-family: 'Dancing Script', cursive;	
+	font-size: 18px;
+	padding: 12px;
+}
+
+tr:nth-child(even){
+	background-color: #ddd;
+}
+
+tr:hover td{
+	background-color: #EEE;	
+	color: #CE7D35;
+}
+
+
+
+
+
+
+
+
+
